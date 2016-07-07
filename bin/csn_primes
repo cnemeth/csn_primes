@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/csn_primes"
-CsnPrimes.print_table
+
+CsnPrimes.print_table({n_primes: ARGV[0].to_i})

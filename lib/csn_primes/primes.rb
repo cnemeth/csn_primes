@@ -3,36 +3,42 @@ require 'awesome_print'
 
 module CsnPrimes
   class Primes
-    attr_reader :primes, :size, :matrix
+    attr_reader :n_primes
 
     def initialize(options={})
-      @primes = options[:primes]
-      @size = primes.count
-      @matrix = build_matrix
+      @n_primes = options[:n_primes]
     end
 
-    def print_table
-      print_to_stdout
+    def first_n_primes
+      primes
     end
 
     private
 
-    def print_to_stdout
-      ap "    #{primes.to_s}"
-      primes.each_with_index do |p, i|
-        ap "#{p}:  #{matrix.row(i).to_s.gsub(/Vector/, '')}"
+    def primes
+      return [2] if n_primes == 1
+      return [2, 3] if n_primes == 2
+      return [2, 3, 5] if n_primes == 3
+      return [2, 3, 5, 7] if n_primes == 4
+
+      arr = [2, 3, 5, 7]
+      n = 8
+      while arr.size < n_primes do
+        arr << n if prime?(n)
+        n += 1
       end
-      true
+
+      arr
     end
 
-    def build_matrix
-      arr = Array.new(size) { Array.new(size) }
-      primes.each_with_index do |m, i|
-        primes.each.with_index do |n, j|
-          arr[i][j] = m * n
-        end
+    def prime?(n)
+      return false if n < 2 || !n.is_a?(Integer)
+
+      (2...n).each do |x|
+        return false if (n % x == 0)
       end
-      Matrix.rows(arr)
+
+      true
     end
   end
 end

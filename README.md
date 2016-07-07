@@ -1,9 +1,5 @@
-Print Multiplication Table for the First Ten Prime Numbers
+Print Multiplication Table for the First `n` Prime Numbers
 ==========================================================
-
-- Author: Csaba Nemeth
-- Last updated: Wednesday, July 6, 2016
-- Repository: git@github.com:cnemeth/csn_primes.git
 
 Introduction
 ------------
@@ -21,15 +17,15 @@ bundle install
 
 3. Run specs
 ```
-bin/rake
+rake
 ```
 
 4. Run app
 ```
-bin/csn_primes
+bin/csn_primes n # n = 1,2,3 ..., n; the first number of primes
 ```
 
-5. Sample output
+5. Sample output for n = 10
 ```
 "    [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]"
 "2:  [4, 6, 10, 14, 22, 26, 34, 38, 46, 58]"

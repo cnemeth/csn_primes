@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/csn_primes"
+CsnPrimes.print_table

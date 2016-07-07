@@ -1,0 +1,8 @@
+*.gem
+Gemfile.lock
+/.bundle
+/.DS_Store
+/.gitkeep
+/.ruby-version
+/coverage/
+/tags

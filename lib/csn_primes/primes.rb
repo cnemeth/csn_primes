@@ -16,13 +16,10 @@ module CsnPrimes
     private
 
     def primes
-      return [2] if n_primes == 1
-      return [2, 3] if n_primes == 2
-      return [2, 3, 5] if n_primes == 3
-      return [2, 3, 5, 7] if n_primes == 4
+      arr = [2]
+      return arr if n_primes == 1
 
-      arr = [2, 3, 5, 7]
-      n = 8
+      n = 3
       while arr.size < n_primes do
         arr << n if prime?(n)
         n += 1
@@ -32,7 +29,9 @@ module CsnPrimes
     end
 
     def prime?(n)
-      return false if n < 2 || !n.is_a?(Integer)
+      return false if n < 2
+      return false if n > 2 && (n % 2 == 0)
+      return false if n > 5 && (n % 5 == 0)
 
       (2...n).each do |x|
         return false if (n % x == 0)

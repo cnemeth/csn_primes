@@ -1,43 +1,52 @@
-require 'matrix'
 require 'awesome_print'
+require 'benchmark'
 
 module CsnPrimes
   class Primes
-    attr_reader :n_primes
+    attr_reader :n_primes, :benchmark
 
     def initialize(options={})
-      @n_primes = options[:n_primes]
+      options = defaults.merge(options)
+      @n_primes = options[:n_primes].to_i
+      @benchmark = options[:benchmark]
     end
 
     def first_n_primes
-      primes
+      if benchmark
+        Benchmark.bmbm do |x|
+          x.report { primes }
+        end
+      else
+        primes
+      end
     end
 
     private
 
     def primes
-      arr = [2]
-      return arr if n_primes == 1
+      primes_found = [2]
+      return primes_found if n_primes == 1
 
       n = 3
-      while arr.size < n_primes do
-        arr << n if prime?(n)
+      while primes_found.size < n_primes do
+        primes_found << n if prime?(n)
         n += 1
       end
 
-      arr
+      primes_found
     end
 
     def prime?(n)
-      return false if n < 2
-      return false if n > 2 && (n % 2 == 0)
-      return false if n > 5 && (n % 5 == 0)
-
-      (2...n).each do |x|
+      max = Math.sqrt(n).to_i
+      (2..max).each do |x|
         return false if (n % x == 0)
       end
 
       true
+    end
+
+    def defaults
+      {n_primes: 10, benchmark: false}
     end
   end
 end

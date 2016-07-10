@@ -2,4 +2,9 @@
 
 require_relative "../lib/csn_primes"
 
-CsnPrimes.print_table({n_primes: ARGV[0].to_i})
+options = {
+  n_primes: ARGV[0] || 10,
+  benchmark: ARGV[1]
+}
+
+CsnPrimes.print_table(options)

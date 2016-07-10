@@ -1,5 +1,9 @@
-Print Multiplication Table for the First `n` Prime Numbers
+Print Multiplication Table for the First *n* Prime Numbers
 ==========================================================
+
+1. Introduction
+2. Performance
+3. References
 
 Introduction
 ------------
@@ -40,7 +44,7 @@ bin/csn_primes n # n = 1,2,3 ..., n; the first number of primes
 "29:  [58, 87, 145, 203, 319, 377, 493, 551, 667, 841]"
 ```
 
-Performance
+Performance [1][2][3][4][5][6]
 -----------
 
 The building of the matrix, in `CsnPrimes::Prime#build_matrix`,
@@ -52,3 +56,13 @@ One way to improve performance is to take advantage of the
 matrix symmetry and create a upper (or lower) triangular
 matrix, which could be mirrored on output. This would
 improve perforemance to O(nlogn).
+
+References
+----------
+
+[1]: https://en.wikipedia.org/wiki/Prime_number "Prime Number"
+[2]: https://en.wikipedia.org/wiki/AKS_primality_test "AKS primality test"
+[3]: https://rosettacode.org/wiki/AKS_test_for_primes#Ruby "AKS test for primes"
+[4]: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes "Sieve of Eratosthenes"
+[5]: https://en.wikipedia.org/wiki/Sieve_of_Sundaram "Sieve of Sundaram"
+[6]: https://en.wikipedia.org/wiki/Sieve_of_Atkin "Sieve of Atkin"

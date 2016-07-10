@@ -7,7 +7,6 @@ module CsnPrimes
 
     def initialize(options={})
       @options = options
-      #@primes = CsnPrimes::Primes.new(options).first_n_primes || []
       @primes = first_n_primes
       @size = primes.count
       @matrix = build_matrix
